@@ -26,12 +26,13 @@ def load_and_prepare_data(filepaths):
     data.dropna(inplace=True)
     data['Month'] = pd.to_datetime(data['Month'], format='%Y-%m-%d')
     data['Target_Sales'] = data.groupby(['Product'])['Sales'].shift(-6)
-    
-    # Identify the most recent date for each product
-    recent_data = data.loc[data.groupby('Product')['Month'].idxmax()]
 
-    # Ensure only the most recent entries are retained
-    recent_data = recent_data.drop_duplicates(subset='Product', keep='last')
+    # Identify the most recent date for each product correctly
+    most_recent_dates = data.groupby('Product')['Month'].max().reset_index()
+    recent_data = data.merge(most_recent_dates, on=['Product', 'Month'])
+
+    print("Recent Data:")
+    print(recent_data)
 
     # Remove the recent data from the main dataset
     data = data[~data.index.isin(recent_data.index)]
