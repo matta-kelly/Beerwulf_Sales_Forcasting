@@ -1,0 +1,5 @@
+# Ignore all files in the data directory
+data/
+
+# Allow tracking of all other files and directories
+!*
