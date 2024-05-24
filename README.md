@@ -3,6 +3,7 @@
 ## Project Overview
 This project is aimed at forecasting sales for Beerwulf using various machine learning models. The project includes data preprocessing, exploratory data analysis (EDA), feature engineering, and model training and evaluation. The best-performing model, Gradient Boosting (GB), is used for both historical seasonal data and future sales predictions.
 
+#### Note: Data is ommited via git ignore since it is not mine to publish
 
 # Workflow
 ### Data Preprocessing:
